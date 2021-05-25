@@ -1,7 +1,5 @@
 package com.darknessvenom;
 
-import com.darknessvenom.data_structure.DoubleLinkedListNode;
-import com.darknessvenom.data_structure.impl.LinkedList;
 import com.darknessvenom.data_structure.impl.LinkedListStack;
 import com.darknessvenom.data_structure.interfaces.Stack;
 import com.sun.istack.internal.NotNull;

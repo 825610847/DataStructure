@@ -208,6 +208,11 @@ public class Chapter_01 {
         return String.valueOf(result).trim();
     }
 
+    /**
+     * 判断是否是加减乘除运算符
+     * @param c
+     * @return
+     */
     public static boolean isOperator(char c) {
         return c == '+' || c == '-' || c == '*' || c == '/';
     }

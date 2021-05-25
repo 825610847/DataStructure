@@ -87,8 +87,8 @@ public class DoubleLinkedListNode<T> {
 
         if(!(node.previousNode == null && node.nextNode == null)) {
             if (node.previousNode == null) {
-                node = node.nextNode;
-                node.previousNode = null;
+                node.node = node.nextNode.node;
+                removeNode(node.nextNode);
             }else if(node.nextNode == null) {
                 node.previousNode.nextNode = null;
             }else {

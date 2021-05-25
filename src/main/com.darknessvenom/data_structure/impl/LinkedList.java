@@ -32,6 +32,10 @@ public class LinkedList<T> implements Iterable<T>{
         return size;
     }
 
+    private void setSize(int size) {
+        this.size = size;
+    }
+
     public void add(T t) {
         if(isEmpty()) {
             head = new DoubleLinkedListNode<>(t);
@@ -150,6 +154,8 @@ public class LinkedList<T> implements Iterable<T>{
 
             temp = temp.nextNode;
         }
+
+        list.setSize(list.getSize() - deletedElements);
 
         return deletedElements;
     }
