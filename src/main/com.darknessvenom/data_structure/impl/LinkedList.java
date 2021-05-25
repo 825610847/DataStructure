@@ -180,4 +180,41 @@ public class LinkedList<T> implements Iterable<T>{
         }
     }
 
+    /**
+     * P103 1.3.27
+     * @param list
+     * @return
+     */
+    public static int max(LinkedList<Integer> list) {
+        if(list == null || list.isEmpty()) {
+            return 0;
+        }
+
+        DoubleLinkedListNode<Integer> temp = list.getHead();
+        int max = 0;
+
+        while(temp != null) {
+            int nodeNum = temp.node == null ? 0 : temp.node;
+            max = max > nodeNum ? max : nodeNum;
+            temp = temp.nextNode;
+        }
+
+        return max;
+    }
+
+    /**
+     * P103 1.3.28
+     * @param node
+     * @param max
+     * @return
+     */
+    public static int maxRecursion(DoubleLinkedListNode<Integer> node, int max) {
+        if(node == null) {
+            return max;
+        }
+        int nodeNum = node.node == null ? 0 : node.node;
+        max = max > nodeNum ? max : nodeNum;
+        return maxRecursion(node.nextNode, max);
+    }
+
 }
