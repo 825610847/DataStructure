@@ -20,4 +20,29 @@ public class SinglyLinkedListNode<T> {
     public SinglyLinkedListNode(T t) {
         this.node = t;
     }
+
+    /**
+     * P103 1.3.30
+     * 单链表指针反转
+     * @param node
+     * @return
+     */
+    public static <T>SinglyLinkedListNode<T> reverse(SinglyLinkedListNode<T> node) {
+        if(node == null) {
+            return null;
+        }
+
+        SinglyLinkedListNode<T> first = node;
+
+        SinglyLinkedListNode<T> reverse = null;
+
+        while (first != null) {
+            SinglyLinkedListNode<T> second = first.nextNode;
+            first.nextNode = reverse;
+            reverse = first;
+            first = second;
+        }
+
+        return reverse;
+    }
 }
