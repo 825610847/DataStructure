@@ -1,6 +1,6 @@
-package com.darknessvenom.data_structure.impl;
+package com.darknessvenom.data_structure.impl.queue;
 
-import com.darknessvenom.data_structure.DoubleLinkedListNode;
+import com.darknessvenom.data_structure.SinglyLinkedListNode;
 import com.darknessvenom.data_structure.interfaces.Queue;
 
 import java.util.Iterator;
@@ -8,63 +8,54 @@ import java.util.NoSuchElementException;
 
 /**
  * <p>
- * Title:
+ * Title: 循环链队列 Circylar Linked Queue
  * </p>
  * <p>
  * Module:
  * </p>
  *
  * @author: DarknessVenom@gmail.com
- * @date: 4/13/21
+ * @date: 5/25/21
  */
-public class LinkedListQueue<T> implements Queue<T> {
+public class CircylarLinkedQueue<T> implements Queue<T> {
 
-    /**
-     * 指向头结点的指针
-     */
-    private DoubleLinkedListNode<T> head;
+    private SinglyLinkedListNode<T> head;
 
-    /**
-     * 指向尾结点的指针
-     */
-    private DoubleLinkedListNode<T> tail;
+    private SinglyLinkedListNode<T> tail;
 
     private int size;
 
     @Override
     public void enqueue(T t) {
-
         if(isEmpty()) {
-            head = new DoubleLinkedListNode<>(t);
+            head = new SinglyLinkedListNode<>(t);
             tail = head;
-        }else {
-            DoubleLinkedListNode<T> temp = tail;
-            tail.nextNode = new DoubleLinkedListNode<>(t);
-            tail = tail.nextNode;
-            tail.previousNode = temp;
+            size = 1;
+            return;
         }
 
+        tail.nextNode = new SinglyLinkedListNode<>(t);
+        tail = tail.nextNode;
+        tail.nextNode = head;
         size++;
     }
 
     @Override
     public T dequeue() {
-
         if(isEmpty()) {
             return null;
         }
 
         T result = head.node;
         head = head.nextNode;
-        head.previousNode = null;
+        tail.nextNode = head;
         size--;
-
         return result;
     }
 
     @Override
     public boolean isEmpty() {
-        return head == null;
+        return size == 0;
     }
 
     @Override
@@ -73,17 +64,19 @@ public class LinkedListQueue<T> implements Queue<T> {
     }
 
     @Override
-    public Iterator iterator() {
-        return new LinkedListQueueIterator();
+    public Iterator<T> iterator() {
+        return new CircylarLinkedQueueIterator();
     }
 
-    class LinkedListQueueIterator implements Iterator<T> {
+    class CircylarLinkedQueueIterator implements Iterator<T> {
 
-        private DoubleLinkedListNode<T> temp = head;
+        SinglyLinkedListNode<T> temp = head;
+
+        int count = 0;
 
         @Override
         public boolean hasNext() {
-            return temp != null;
+            return temp != null && count < size;
         }
 
         @Override
@@ -91,10 +84,10 @@ public class LinkedListQueue<T> implements Queue<T> {
             if (hasNext()) {
                 T node = temp.node;
                 temp = temp.nextNode;
+                count++;
                 return node;
             }
             throw new NoSuchElementException("only " + size + " elements");
         }
     }
-
 }

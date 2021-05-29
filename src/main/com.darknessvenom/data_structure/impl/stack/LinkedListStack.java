@@ -1,4 +1,4 @@
-package com.darknessvenom.data_structure.impl;
+package com.darknessvenom.data_structure.impl.stack;
 
 import com.darknessvenom.data_structure.DoubleLinkedListNode;
 import com.darknessvenom.data_structure.interfaces.Stack;

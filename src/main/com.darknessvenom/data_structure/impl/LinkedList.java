@@ -165,7 +165,7 @@ public class LinkedList<T> implements Iterable<T> {
     public static <T> String display(LinkedList<T> list) {
         StringBuilder builder = new StringBuilder();
         for (T t : list) {
-            builder.append(t).append(" -> ");
+            builder.append(t).append(" ⇌ ");
         }
 
         builder.append("Ø");

@@ -1,4 +1,4 @@
-import com.darknessvenom.data_structure.impl.CircylarLinkedQueue;
+import com.darknessvenom.data_structure.impl.queue.CircylarLinkedQueue;
 
 /**
  * <p>

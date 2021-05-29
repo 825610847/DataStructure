@@ -1,4 +1,4 @@
-package com.darknessvenom.data_structure.impl;
+package com.darknessvenom.data_structure.impl.bag;
 
 import com.darknessvenom.data_structure.SinglyLinkedListNode;
 import com.darknessvenom.data_structure.interfaces.Bag;

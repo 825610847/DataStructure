@@ -26,6 +26,7 @@ public class TestSinglyLinkedList {
         list.add(4.5);
 
         System.out.println(list);
-        System.out.println(SinglyLinkedListNode.reverse(list.getHead()));
+        list.reverse();
+        System.out.println(list);
     }
 }

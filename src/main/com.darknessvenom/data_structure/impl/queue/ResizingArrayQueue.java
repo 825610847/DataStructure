@@ -1,4 +1,4 @@
-package com.darknessvenom.data_structure.impl;
+package com.darknessvenom.data_structure.impl.queue;
 
 import com.darknessvenom.data_structure.interfaces.Queue;
 

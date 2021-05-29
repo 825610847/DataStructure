@@ -53,6 +53,13 @@ public class SinglyLinkedList<T> implements Iterable<T>{
         size++;
     }
 
+    /**
+     * 单链表指针反转
+     */
+    public void reverse() {
+        head = SinglyLinkedListNode.reverse(head);
+    }
+
     public static <T> String display(SinglyLinkedList<T> list) {
         StringBuilder builder = new StringBuilder();
         for (T t : list) {

@@ -45,4 +45,27 @@ public class SinglyLinkedListNode<T> {
 
         return reverse;
     }
+
+    /**
+     *P103 1.3.30
+     * 单链表指针反转(递归)
+     * @param node
+     * @param <T>
+     * @return
+     */
+    public static <T>SinglyLinkedListNode<T> reverseByRecursion(SinglyLinkedListNode<T> node) {
+        if(node == null) {
+            return null;
+        }
+        if(node.nextNode == null) {
+            return node;
+        }
+
+        SinglyLinkedListNode<T> second = node.nextNode;
+        SinglyLinkedListNode<T> rest = reverseByRecursion(second);
+
+        second.nextNode = node;
+        node.nextNode = null;
+        return rest;
+    }
 }

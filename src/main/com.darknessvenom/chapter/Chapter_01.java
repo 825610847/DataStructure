@@ -1,6 +1,6 @@
 package com.darknessvenom.chapter;
 
-import com.darknessvenom.data_structure.impl.LinkedListStack;
+import com.darknessvenom.data_structure.impl.stack.LinkedListStack;
 import com.darknessvenom.data_structure.interfaces.Stack;
 import com.sun.istack.internal.NotNull;
 
