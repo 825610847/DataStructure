@@ -11,7 +11,7 @@ package com.darknessvenom.data_structure;
  * @author: DarknessVenom@gmail.com
  * @date: 4/13/21
  */
-public class DoubleLinkedListNode<T> {
+public class DoubleLinkedListNode<T>{
 
     public T node;
 
@@ -103,4 +103,5 @@ public class DoubleLinkedListNode<T> {
     public T remove() {
         return removeNode(this);
     }
+
 }

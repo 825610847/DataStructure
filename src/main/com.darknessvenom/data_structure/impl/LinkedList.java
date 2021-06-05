@@ -36,6 +36,10 @@ public class LinkedList<T> implements Iterable<T> {
         this.size = size;
     }
 
+    /**
+     * 尾插
+     * @param t
+     */
     public void add(T t) {
         if (isEmpty()) {
             head = new DoubleLinkedListNode<>(t);

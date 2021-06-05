@@ -4,7 +4,6 @@ import com.darknessvenom.data_structure.DoubleLinkedListNode;
 import com.darknessvenom.data_structure.interfaces.Queue;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 /**
  * <p>
@@ -30,6 +29,18 @@ public class LinkedListQueue<T> implements Queue<T> {
     private DoubleLinkedListNode<T> tail;
 
     private int size;
+
+    public LinkedListQueue() {}
+
+    /**
+     * P106 1.3.41
+     * @param queue
+     */
+    public LinkedListQueue(Queue<T> queue) {
+        for(T t : queue) {
+            this.enqueue(t);
+        }
+    }
 
     @Override
     public void enqueue(T t) {
@@ -88,12 +99,26 @@ public class LinkedListQueue<T> implements Queue<T> {
 
         @Override
         public T next() {
-            if (hasNext()) {
-                T node = temp.node;
-                temp = temp.nextNode;
-                return node;
+            T node = temp.node;
+            temp = temp.nextNode;
+            return node;
+        }
+    }
+
+    @Override
+    public String toString() {
+        Iterator<T> it = iterator();
+        if (!it.hasNext()) {
+            return null;
+        }
+        StringBuilder sb = new StringBuilder();
+        while (true) {
+            T t = it.next();
+            sb.append(t == this ? "(this Collection)" : t);
+            if (!it.hasNext()) {
+                return sb.toString();
             }
-            throw new NoSuchElementException("only " + size + " elements");
+            sb.append(" <-->").append(' ');
         }
     }
 

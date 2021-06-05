@@ -4,7 +4,6 @@ import com.darknessvenom.data_structure.DoubleLinkedListNode;
 import com.darknessvenom.data_structure.interfaces.Stack;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 /**
  * <p>
@@ -28,22 +27,32 @@ public class LinkedListStack<T> implements Stack<T> {
 
     public LinkedListStack() {}
 
-    public LinkedListStack(T ... objs) {
-        if(this == null) {
-            new LinkedListStack<>();
-        }
+    /**
+     * P106 1.3.42
+     * 栈的深拷贝
+     * @param stack
+     */
+    public LinkedListStack(Stack<T> stack) {
+        if (stack != null && !stack.isEmpty()) {
+            int index = 0;
+            int oldStackSize = stack.getSize();
+            Object[] elements = new Object[oldStackSize];
+            for (T t : stack) {
+                elements[index++] = t;
+            }
 
-        for(T t : objs) {
-            this.push(t);
+            for (int i = 0; i < oldStackSize; i++) {
+                this.push((T)elements[i]);
+            }
         }
     }
 
     @Override
     public void push(T t) {
 
-        if(isEmpty()) {
+        if (isEmpty()) {
             top = new DoubleLinkedListNode<>(t);
-        }else {
+        } else {
             DoubleLinkedListNode<T> temp = top;
             top.nextNode = new DoubleLinkedListNode<>(t);
             top = top.nextNode;
@@ -55,7 +64,7 @@ public class LinkedListStack<T> implements Stack<T> {
 
     @Override
     public T pop() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             return null;
         }
 
@@ -63,7 +72,7 @@ public class LinkedListStack<T> implements Stack<T> {
         if (top.previousNode != null) {
             top = top.previousNode;
             top.nextNode = null;
-        }else {
+        } else {
             top = null;
         }
         size--;
@@ -102,13 +111,26 @@ public class LinkedListStack<T> implements Stack<T> {
 
         @Override
         public T next() {
-            if (hasNext()) {
-                T node = temp.node;
-                temp = temp.previousNode;
-                return node;
-            }
-            throw new NoSuchElementException("only " + size + " elements");
+            T node = temp.node;
+            temp = temp.previousNode;
+            return node;
         }
     }
 
+    @Override
+    public String toString() {
+        Iterator<T> it = iterator();
+        if (!it.hasNext()) {
+            return null;
+        }
+        StringBuilder sb = new StringBuilder();
+        while (true) {
+            T t = it.next();
+            sb.append(t == this ? "(this Collection)" : t);
+            if (!it.hasNext()) {
+                return sb.append(" <-- top").toString();
+            }
+            sb.append(" <-->").append(' ');
+        }
+    }
 }
