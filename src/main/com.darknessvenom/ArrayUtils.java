@@ -18,27 +18,54 @@ public class ArrayUtils {
     private static Random rand = new Random();
 
     public static <T> void swap(T[] a, int i, int j) {
+        if(i == j) {
+            return;
+        }
         T temp = a[i];
         a[i] = a[j];
         a[j] = temp;
     }
 
     /**
-     * 随机打乱数组里的元素
+     * 随机打乱数组里的所有元素
      *
      * @param arr
      * @param <T>
      */
-    public static <T>T[] shuffle(T[] arr) {
+    public static <T>void shuffle(T[] arr) {
+        shuffle(arr, arr.length - 1);
+    }
+
+    /**
+     * 打乱前index + 1个的元素
+     * @param arr
+     * @param index
+     * @param <T>
+     * @return
+     */
+    public static <T>void shuffle(T[] arr, int index) {
+        shuffle(arr, 0, index);
+    }
+
+    /**
+     * 打乱arr[firstIndex] 到 arr[lastIndex] 的元素
+     * @param arr
+     * @param firstIndex
+     * @param lastIndex
+     * @param <T>
+     */
+    public static <T>void shuffle(T[] arr, int firstIndex, int lastIndex) {
+
         if (arr == null || arr.length <= 1) {
-            return null;
-        }
-        for (int i = arr.length; i > 0; i--) {
-            int randInd = rand.nextInt(i);
-            swap(arr, randInd, i - 1);
+            return;
+        }else if (lastIndex < 1 || firstIndex >= lastIndex) {
+            throw new RuntimeException("Wrong index!");
         }
 
-        return arr;
+        for (int i = lastIndex; i > firstIndex; i--) {
+            int randInd = rand.nextInt(i) + firstIndex;
+            swap(arr, randInd, i);
+        }
     }
 }
 

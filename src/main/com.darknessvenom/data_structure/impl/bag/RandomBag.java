@@ -91,18 +91,15 @@ public class RandomBag<T> implements Bag<T> {
 
         private int count;
 
-        T[] randomArray;
-
         /**
          * 随机打乱数组的顺序
          */
         public RandomBagIterator() {
             count = 0;
-            randomArray = (T[])ArrayUtils
-                    .shuffle(Arrays.copyOfRange(items, 0, size));
+            ArrayUtils.shuffle(Arrays.copyOfRange(items, 0, size));
         }
 
-        @Override
+        @Override 
         public boolean hasNext() {
             return count < size;
         }
@@ -110,7 +107,7 @@ public class RandomBag<T> implements Bag<T> {
         @Override
         public T next() {
             if (hasNext()) {
-                return randomArray[count++];
+                return (T)items[count++];
             }
             throw new NoSuchElementException("only " + size + " elements");
         }
