@@ -27,7 +27,7 @@ public class CircylarLinkedQueue<T> implements Queue<T> {
 
     @Override
     public void enqueue(T t) {
-        if(isEmpty()) {
+        if (isEmpty()) {
             head = new SinglyLinkedListNode<>(t);
             tail = head;
             size = 1;
@@ -42,7 +42,7 @@ public class CircylarLinkedQueue<T> implements Queue<T> {
 
     @Override
     public T dequeue() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             return null;
         }
 
@@ -90,4 +90,40 @@ public class CircylarLinkedQueue<T> implements Queue<T> {
             throw new NoSuchElementException("only " + size + " elements");
         }
     }
+
+    public String josephus(int m) {
+        return josephus(m, size);
+    }
+
+    /**
+     * P105 1.3.37
+     *
+     * @param m 杀死报到m的人
+     * @param n 深陷绝境的人数
+     */
+    public String josephus(int m, int n) {
+        if (isEmpty()) {
+            return null;
+        } else if (m > n) {
+            throw new RuntimeException("Josephus: m must <= n");
+        }
+
+        StringBuilder builder = new StringBuilder();
+        int count = 1;
+        while(size != 1) {
+            if(count == m) {
+                builder.append(dequeue()).append(" ");
+                count = 0;
+            }else {
+                head = head.nextNode;
+                tail = tail.nextNode;
+            }
+
+            count++;
+        }
+
+        builder.append("\nwinner winner chichen dinner: ").append(dequeue());
+        return builder.toString();
+    }
+
 }
