@@ -1,3 +1,5 @@
+package com.darknessvenom.data_structure;
+
 import com.darknessvenom.data_structure.SinglyLinkedListNode;
 import com.darknessvenom.data_structure.impl.SinglyLinkedList;
 

@@ -1,3 +1,5 @@
+package com.darknessvenom.data_structure.queue;
+
 import com.darknessvenom.data_structure.impl.queue.LinkedListQueue;
 import com.darknessvenom.data_structure.interfaces.Queue;
 

@@ -1,3 +1,5 @@
+package com.darknessvenom.data_structure;
+
 import com.darknessvenom.data_structure.impl.bag.RandomBag;
 import com.darknessvenom.data_structure.interfaces.Bag;
 

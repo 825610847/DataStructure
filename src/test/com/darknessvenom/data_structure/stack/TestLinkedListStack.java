@@ -1,3 +1,6 @@
+package com.darknessvenom.data_structure.stack;
+
+import com.darknessvenom.Stopwatch;
 import com.darknessvenom.data_structure.impl.stack.LinkedListStack;
 import com.darknessvenom.data_structure.interfaces.Stack;
 
@@ -27,17 +30,17 @@ public class TestLinkedListStack {
         s1.push("weasd");
         s1.push("sdw");
 
+        Stopwatch timer = new Stopwatch();
         Stack<String> s2 = new LinkedListStack<>(s1);
 
-        System.out.println(s2);
-
         s1.pop();
         s1.pop();
         s1.pop();
         s1.pop();
         s1.pop();
 
-        System.out.println(s1);
         System.out.println(s2);
+        System.out.println(timer.elpasedTime());
+
     }
 }
