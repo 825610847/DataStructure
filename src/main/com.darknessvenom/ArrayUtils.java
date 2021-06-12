@@ -18,7 +18,7 @@ public class ArrayUtils {
     private static Random rand = new Random();
 
     public static <T> void swap(T[] a, int i, int j) {
-        if (i == j) {
+        if (a == null || a.length <= 1 || i == j) {
             return;
         }
         T temp = a[i];
