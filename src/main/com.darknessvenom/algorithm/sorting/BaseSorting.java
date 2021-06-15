@@ -13,7 +13,7 @@ import com.darknessvenom.ArrayUtils;
  * @author: DarknessVenom@gmail.com
  * @date: 6/12/21
  */
-public abstract class BaseSorting {
+public class BaseSorting {
 
     /**
      *

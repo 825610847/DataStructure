@@ -1,5 +1,6 @@
 package com.darknessvenom;
 
+import java.lang.reflect.Array;
 import java.util.Random;
 
 /**
@@ -16,6 +17,27 @@ import java.util.Random;
 public class ArrayUtils {
 
     private static Random rand = new Random();
+
+    /**
+     * 随机生成一个数组
+     * @param length
+     * @param cls
+     * @param <T>
+     * @return
+     */
+    public static <T extends Number>T[] initialize(int length, Class<T> cls) {
+        if(length <= 0 || cls == null) {
+            return null;
+        }
+
+        T[] arr = (T[])Array.newInstance(cls, length);
+
+        for(int i = 0; i < length; i++) {
+            Array.set(arr, i, rand.nextInt(length));
+        }
+
+        return arr;
+    }
 
     public static <T> void swap(T[] a, int i, int j) {
         if (a == null || a.length <= 1 || i == j) {
@@ -94,7 +116,6 @@ public class ArrayUtils {
         }
 
     }
-
 
 }
 
