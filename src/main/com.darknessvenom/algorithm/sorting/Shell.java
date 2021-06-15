@@ -35,7 +35,7 @@ public class Shell extends BaseSorting {
         while(h >= 1) {
             for(int i = h; i < length; i++) {
                 //将a[i]插入到a[i - h], a[i - 2*h] ......
-                for(int j = i; h <= j && less(a[j], a[j - 1]); j -= h) {
+                for(int j = i; h <= j && less(a[j], a[j - h]); j -= h) {
                     exchange(a, j, j - h);
                 }
             }
