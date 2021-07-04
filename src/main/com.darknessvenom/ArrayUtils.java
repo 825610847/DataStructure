@@ -117,5 +117,15 @@ public class ArrayUtils {
 
     }
 
+    /**
+     * String转Character数组
+     * @param s
+     * @return
+     */
+    public static Character[] stringToCharacterArray(String s) {
+        return s == null ? null
+                : s.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
+    }
+
 }
 
